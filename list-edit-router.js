@@ -3,15 +3,17 @@ const router=express.Router();
 
 let listaTareas=require("./listaTareas");
 
-router.post("/id/:id/description/:description",(req,res)=>
+const {validateBody,validateIdDescription,validateIsCompleted}=require("./src/middlewares-list-edit");
+
+router.post("/",validateBody,validateIdDescription,(req,res)=>
 {
 
-    const id = req.params.id;
-    const description = req.params.description;
+    const id = parseInt(req.body.id);
+    const description = req.body.description;
 
     let verification=false;
     listaTareas.filter(item=>{
-        if(item.id==id)
+        if(parseInt(item.id)==id)
             verification=true;
     });
 
@@ -27,10 +29,10 @@ router.post("/id/:id/description/:description",(req,res)=>
    
 });
 
-router.delete("/id/:id",(req,res)=>
+router.delete("/:id",(req,res)=>
 {
-    const id = req.params.id;
-    const index=listaTareas.findIndex((item)=>item.id==id);
+    const id = parseInt(req.params.id);
+    const index=listaTareas.findIndex((item)=>parseInt(item.id)==id);
     if(index==-1)
         res.status(404).send("The indicated id ("+id+") doesn't match with any register in the task list.");
     else
@@ -41,20 +43,13 @@ router.delete("/id/:id",(req,res)=>
     }
 });
 
-router.put("/id/:id/isCompleted/:isCompleted/description/:description",(req,res)=>
+router.put("/",validateBody,validateIdDescription,validateIsCompleted,(req,res)=>
 {
-    const id=req.params.id;
-    const description=req.params.description;
-    let isCompleted=req.params.isCompleted;
+    const id=parseInt(req.body.id);
+    const description=req.body.description;
+    const isCompleted=req.body.isCompleted;
 
-    if(isCompleted==="true")
-        isCompleted=true;
-    else if(isCompleted==="false")
-        isCompleted=false;
-    else
-        isCompleted=null;
-
-    const index=listaTareas.findIndex((item)=>item.id==id);
+    const index=listaTareas.findIndex((item)=>parseInt(item.id)==id);
     if(index==-1)
         res.status(404).send("The indicated id ("+id+") doesn't match with any register in the task list.");
     else

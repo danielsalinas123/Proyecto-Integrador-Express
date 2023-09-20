@@ -1,23 +1,23 @@
 let listaTareas = [
     {
-        "id":"123456",
+        "id":1,
         "isCompleted":false,
-        "description":"Walk the dog"
+        "description":"Task 1"
     },
     {
-        "id":"654321",
+        "id":2,
         "isCompleted":true,
-        "description":"make the bed"
+        "description":"Task 2"
     },
     {
-        "id":"135246",
+        "id":3,
         "isCompleted":false,
-        "description":"go to church"
+        "description":"Task 3"
     },
     {
-        "id":"524361",
+        "id":4,
         "isCompleted":true,
-        "description":"wash the dishes"
+        "description":"Task 4"
     }
 ];
 
