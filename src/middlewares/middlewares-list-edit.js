@@ -1,13 +1,3 @@
-const validateBody=(req,res,next)=>
-{
-    const body=req.body;
-    if(Object.values(body).length==0){
-        res.status(400).send("The body of the request is empty and it's required to add or update a task.");
-    }else{
-        next();
-    }
-}
-
 const validateIdDescription=(req,res,next)=>
 {
     const body=req.body;
@@ -63,4 +53,4 @@ const validateIsCompleted=(req,res,next)=>
         next();
 }
 
-module.exports={validateBody,validateIdDescription,validateIsCompleted};
+module.exports={validateIdDescription,validateIsCompleted};

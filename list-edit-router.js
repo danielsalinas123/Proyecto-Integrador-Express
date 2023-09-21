@@ -1,9 +1,10 @@
 const express=require("express");
 const router=express.Router();
 
-let listaTareas=require("./listaTareas");
+let listaTareas=require("./src/data bases/listaTareas");
 
-const {validateBody,validateIdDescription,validateIsCompleted}=require("./src/middlewares-list-edit");
+const {validateIdDescription,validateIsCompleted}=require("./src/middlewares/middlewares-list-edit");
+const {validateBody}=require("./src/middlewares/middlewares-general");
 
 router.post("/",validateBody,validateIdDescription,(req,res)=>
 {

@@ -1,9 +1,9 @@
 const express=require("express");
 const router=express.Router();
 
-const listaTareas=require("./listaTareas");
+const listaTareas=require("./src/data bases/listaTareas");
 
-const {validateIsCompletedParameter}=require("./src/middlewares-list-view");
+const {validateIsCompletedParameter}=require("./src/middlewares/middlewares-list-view");
 
 router.get("/:isCompleted",validateIsCompletedParameter,(req,res)=>
 {
