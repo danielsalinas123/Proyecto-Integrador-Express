@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon servidor.js"
+    "dev": "nodemon listTask-RestApi.js"
   },
   "keywords": [],
   "author": "Daniel Salinas Jaramillo",

@@ -14,7 +14,7 @@ const validateBody=(req,res,next)=>
 {
     const body=req.body;
     if(Object.values(body).length==0){
-        res.status(400).send("The body of the request is empty and it's required.");
+        res.status(400).json({error:"The body of the request is empty and it's required."});
     }else{
         next();
     }
